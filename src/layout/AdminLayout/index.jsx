@@ -57,7 +57,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' && pr
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
-const MainLayout = () => {
+const AdminLayout = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -73,14 +73,16 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (user) {
+      // if user role is not admin, redirect to dashboard
+
+      window.location.href = '/dashboard';
     } else {
       redirect();
     }
   }, [user]);
 
   const redirect = () => {
-    console.log('redirect');
-    window.location.href = '/';
+    // window.location.href = '/';
   }
 
   return (
@@ -116,4 +118,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default AdminLayout;

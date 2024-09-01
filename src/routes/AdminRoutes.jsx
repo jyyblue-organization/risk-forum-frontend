@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 
 // project imports
-import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
+import AdminLayout from 'layout/AdminLayout';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard')));
@@ -19,21 +19,13 @@ const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-const MainRoutes = {
-  element: <MainLayout />,
+const AdminRoutes = {
+  path: '/admin',
+  element: <AdminLayout />,
   children: [
     {
-      path: '/dashboard',
-      element: <DashboardDefault />
-    },
-    {
       path: 'dashboard',
-      children: [
-        {
-          path: 'default',
-          element: <DashboardDefault />
-        }
-      ]
+      element: <DashboardDefault />
     },
     {
       path: 'utils',
@@ -87,4 +79,4 @@ const MainRoutes = {
   ]
 };
 
-export default MainRoutes;
+export default AdminRoutes;
